@@ -2,16 +2,16 @@
 
 INSERT INTO food_menu (name, price, image_url, description)
 VALUES 
-    ('Item 1', 10.99, 'https://example.com/item1.jpg', 'Description of item 1'),
-    ('Item 2', 12.99, 'https://example.com/item2.jpg', 'Description of item 2'),
-    ('Item 3', 15.99, 'https://example.com/item3.jpg', 'Description of item 3'),
-    ('Item 4', 8.99, 'https://example.com/item4.jpg', 'Description of item 4'),
-    ('Item 5', 5.99, 'https://example.com/item5.jpg', 'Description of item 5'),
-    ('Item 6', 9.99, 'https://example.com/item6.jpg', 'Description of item 6'),
-    ('Item 7', 14.99, 'https://example.com/item7.jpg', 'Description of item 7'),
-    ('Item 8', 19.99, 'https://example.com/item8.jpg', 'Description of item 8'),
-    ('Item 9', 25.99, 'https://example.com/item9.jpg', 'Description of item 9'),
-    ('Item 10', 11.99, 'https://example.com/item10.jpg', 'Description of item 10');
+    ('Item 1', 10.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 1'),
+    ('Item 2', 12.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 2'),
+    ('Item 3', 15.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 3'),
+    ('Item 4', 8.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 4'),
+    ('Item 5', 5.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 5'),
+    ('Item 6', 9.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 6'),
+    ('Item 7', 14.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 7'),
+    ('Item 8', 19.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 8'),
+    ('Item 9', 25.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 9'),
+    ('Item 10', 11.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 10');
 
 -- Create an entry in the "food_order" table
 INSERT INTO food_order (seat_id, payment_completed) VALUES ('A1', false) RETURNING id;
