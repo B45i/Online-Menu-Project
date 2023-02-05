@@ -21,8 +21,6 @@ button {
     border-radius: 6px;
     cursor: pointer;
     border: 1px solid white;
-    margin-right: 1rem;
-    margin-left: 1rem;
 }
 
 button:hover {
@@ -40,6 +38,31 @@ nav {
 }
 
 hr {
-    margin: 0.5rem;
-    border-color: rgba(0, 0, 0, 0.2);
+    margin: 0.5rem 0;
+    background-color: #ddd;
+    height: 1px;
+    border: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+table {
+    width: 100%;
+}
+table,
+th,
+td {
+    padding: 5px;
+
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+.text-bold {
+    font-weight: bold;
 }

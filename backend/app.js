@@ -4,7 +4,8 @@ const { Client } = require('pg');
 const { groupBy } = require('lodash');
 
 // database connection
-const connectionString = '';
+const connectionString =
+    'postgres://playground_9j66_user:JxkOLBnhSsbz8yIfPg3EDQEw8yoqkX8O@dpg-cfa9nopgp3jsh6ehj650-a.singapore-postgres.render.com/playground_9j66';
 
 const pgClient = new Client(connectionString + '?ssl=true');
 pgClient.connect();
@@ -74,6 +75,7 @@ async function getOrders() {
             food_order.seat_id,
             food_order_items.food_id,
             food_menu.name,
+            food_menu.price,
             food_order_items.quantity
         FROM food_order
         JOIN food_order_items ON food_order.id = food_order_items.order_id
@@ -89,6 +91,7 @@ async function getOrders() {
             food_id: item.food_id,
             name: item.name,
             quantity: item.quantity,
+            price: item.price,
         })),
     }));
 

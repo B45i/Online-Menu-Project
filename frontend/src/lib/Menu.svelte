@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { getMenu } from '../api/api';
+    import { getMenu, placeOrder } from '../api/api';
 
     let menuItems = [];
     let showCartItems = false;
@@ -25,6 +25,15 @@
             cart = [...cart];
         } else {
             cart = [...cart, { ...item, quantity: 1 }];
+        }
+    }
+
+    async function handlePlaceOrder() {
+        try {
+            const response = await placeOrder({ items: cart, seat_id: 'A1' });
+            cart = [];
+        } catch (error) {
+            console.log(error);
         }
     }
 </script>
@@ -63,25 +72,18 @@
 
         <div class="cart-menu">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <span class="show-cart" id="show-cart" on:click={toggleShowCart}>
+            <span class="show-cart" on:click={toggleShowCart}>
                 {showCartItems ? 'Hide Cart' : 'Show Cart'}
             </span>
             <div>
-                Total: <span id="cart-total">{total} </span> Rs
-                <button id="place-order">Order</button>
+                Total: <span>{total} </span> Rs
+                <button on:click={handlePlaceOrder}>Order</button>
             </div>
         </div>
     </div>
 </main>
 
 <style>
-    main {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        max-height: 100vh;
-    }
-
     .menu {
         flex-grow: 1;
         overflow: auto;
