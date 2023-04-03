@@ -66,3 +66,11 @@ td {
 .text-bold {
     font-weight: bold;
 }
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: rgb(185, 182, 182);
+}
