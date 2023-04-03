@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import Navbar from './Navbar.svelte';
 
     let menuItems = [
         {
@@ -135,12 +136,7 @@
 </script>
 
 <main>
-    <!-- navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Hotel ABC</a>
-        </div>
-    </nav>
+    <Navbar/>
 
     <!-- menu -->
 

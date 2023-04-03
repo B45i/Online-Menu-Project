@@ -5,6 +5,8 @@
 </script>
 
 <Router>
+    <Route path="/">
+    <div>hello</div></Route>
     <Route path="table/:id">
         <Menu />
     </Route>
