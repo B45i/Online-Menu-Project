@@ -166,13 +166,27 @@
     </div>
 
     <!-- cart -->
-    <div class="cart">
-        <button class="btn btn-primary">Show Cart</button>
-        <div class="d-flex align-items-center gap-3">
-            <span class="badge text-bg-success">Total: {total}</span>
-            <button class="btn btn-primary">Place order</button>
+    <div class="">
+        {#if showCartItems==true}
+        <ul class="list-group  ">
+            {#each cart as cartItem}
+            <li class="list-group-item ">{cartItem.name}</li>
+ 
+            {/each}
+           </ul>
+            
+        {/if}
+        
+        
+        <div class="cart-bar">
+            <button on:click={toggleShowCart} class="btn btn-primary">{showCartItems ? "Hide cart" : "Show cart"}</button>
+            <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-success">Total: {total}</span>
+                <button class="btn btn-primary">Place order</button>
+            </div>
         </div>
     </div>
+
 </main>
 
 <style>
@@ -197,7 +211,7 @@
         border-radius: 5px;
     }
 
-    .cart {
+    .cart-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
