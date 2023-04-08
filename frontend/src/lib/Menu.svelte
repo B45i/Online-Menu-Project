@@ -156,7 +156,7 @@
 </script>
 
 <main>
-    <Navbar />
+    <Navbar isAdmin={false} />
 
     <!-- menu -->
 

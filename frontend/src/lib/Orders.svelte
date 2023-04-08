@@ -73,7 +73,8 @@
 </script>
 
 <main>
-    <Navbar />
+    <Navbar isAdmin={true} />
+    <h4 class="m-3">Orders:</h4>
     {#each orders as order}
         <div class="p-4 border m-3 rounded shadow">
             <div class="d-flex justify-content-between mb-2 fw-bold">
