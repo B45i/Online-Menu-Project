@@ -109,34 +109,54 @@
     }
 
     function addItemToCart(item) {
-        // const cartItem = cart.find(x => x.id === item.id);
-        cart = [...cart, item]; // array destructuring
+        const cartItem = cart.find(cartItem => cartItem.id === item.id);
 
-        // if (cartItem) {
-        //     cartItem.quantity++;
-        //     cart = [...cart];
-        // } else {
-        //     cart = [...cart, { ...item, quantity: 1 }];
-        // }
+        if (cartItem) {
+            cartItem.quantity++;
+            cart = [...cart];
+        } else {
+            cart = [...cart, { ...item, quantity: 1 }];
+        }
 
+        calculateTotal();
+    }
+
+    function removeItemFromCart(item) {
+        const cartItem = cart.find(cartItem => cartItem.id === item.id);
+
+        if (cartItem) {
+        }
+
+        if (cartItem.quantity > 1) {
+            cartItem.quantity--;
+            cart = [...cart];
+        } else {
+            cart = cart.filter(cartItem => cartItem.id !== item.id);
+        }
+
+        calculateTotal();
+    }
+
+    function calculateTotal() {
         total = 0;
         cart.forEach(item => {
-            total += item.price;
+            total += item.price * item.quantity;
         });
     }
 
     async function handlePlaceOrder() {
-        try {
-            // const response = await placeOrder({ items: cart, seat_id: 'A1' });
-            cart = [];
-        } catch (error) {
-            console.log(error);
-        }
+        cart = [];
+        calculateTotal();
+        // try {
+        //     // const response = await placeOrder({ items: cart, seat_id: 'A1' });
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }
 </script>
 
 <main>
-    <Navbar/>
+    <Navbar />
 
     <!-- menu -->
 
@@ -167,26 +187,38 @@
 
     <!-- cart -->
     <div class="">
-        {#if showCartItems==true}
-        <ul class="list-group  ">
-            {#each cart as cartItem}
-            <li class="list-group-item ">{cartItem.name}</li>
- 
-            {/each}
-           </ul>
-            
+        {#if showCartItems == true}
+            <ul class="list-group">
+                {#each cart as cartItem}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>{cartItem.name}</span>
+                        <div>
+                            {cartItem.price} X {cartItem.quantity}
+                            <button
+                                type="button"
+                                class="btn btn-danger btn-sm ms-2"
+                                on:click={e => removeItemFromCart(cartItem)}
+                            >
+                                <i class="bi-trash" /></button
+                            >
+                        </div>
+                    </li>
+                {/each}
+            </ul>
         {/if}
-        
-        
+
         <div class="cart-bar">
-            <button on:click={toggleShowCart} class="btn btn-primary">{showCartItems ? "Hide cart" : "Show cart"}</button>
+            <button on:click={toggleShowCart} class="btn btn-primary"
+                >{showCartItems ? 'Hide cart' : 'Show cart'}</button
+            >
             <div class="d-flex align-items-center gap-3">
                 <span class="badge text-bg-success">Total: {total}</span>
-                <button class="btn btn-primary">Place order</button>
+                <button on:click={handlePlaceOrder} class="btn btn-primary"
+                    >Place order</button
+                >
             </div>
         </div>
     </div>
-
 </main>
 
 <style>
