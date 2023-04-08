@@ -6,12 +6,16 @@
 
 <Router>
     <Route path="/">
-    <div>hello</div></Route>
+        <div>hello</div></Route
+    >
     <Route path="table/:id">
         <Menu />
     </Route>
     <Route path="admin/orders">
         <Orders />
+    </Route>
+    <Route path="/*">
+        <h1 class="text-center mt-5">page not found</h1>
     </Route>
 </Router>
 
