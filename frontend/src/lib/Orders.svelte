@@ -1,5 +1,7 @@
 <script>
     import { onMount } from 'svelte';
+    import { generatePDF } from '../utils/pdf';
+
     import { completePayment, getOrders } from '../api/api';
     import Navbar from './Navbar.svelte';
 
@@ -15,6 +17,12 @@
     }
 
     async function completeOrder(order) {
+        generatePDF(
+            'ABC Restaurant',
+            order.items,
+            order.seat_id,
+            order.order_id
+        );
         const data = await completePayment(order.order_id);
         loadOrders();
     }
