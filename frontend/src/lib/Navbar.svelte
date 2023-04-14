@@ -1,4 +1,6 @@
 <script>
+    import { Link } from 'svelte-navigator';
+
     export let isAdmin = true;
     let restaurantName = 'Hotel ABC';
 </script>
@@ -8,8 +10,13 @@
         <a class="navbar-brand" href="#">{restaurantName}</a>
         <div class="d-flex gap-2">
             {#if isAdmin}
-                <a class="btn btn-outline-light" href="/orders">Orders</a>
-                <a class="btn btn-outline-light" href="/menu">Menu</a>
+                <Link class="btn btn-outline-light" to="/admin/orders"
+                    >Orders</Link
+                >
+
+                <Link class="btn btn-outline-light" to="/admin/menu"
+                    >Edit Menu</Link
+                >
             {/if}
         </div>
     </div>
