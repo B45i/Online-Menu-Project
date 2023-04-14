@@ -1,12 +1,15 @@
 <script>
     import { onMount } from 'svelte';
     import { getMenu, placeOrder } from '../api/api.js';
+    import { useParams } from 'svelte-navigator';
     import Navbar from './Navbar.svelte';
 
     let menuItems = [];
     let showCartItems = false;
     let cart = [];
     let total = 0;
+
+    const params = useParams();
 
     onMount(loadMenu);
 
@@ -56,7 +59,10 @@
 
     async function handlePlaceOrder() {
         try {
-            const response = await placeOrder({ items: cart, seat_id: 'A1' });
+            const response = await placeOrder({
+                items: cart,
+                seat_id: $params.id,
+            });
             cart = [];
             calculateTotal();
         } catch (error) {

@@ -3,72 +3,24 @@
     import { completePayment, getOrders } from '../api/api';
     import Navbar from './Navbar.svelte';
 
-    let orders = [
-        {
-            seat_id: 1,
-            order_id: 101,
-            items: [
-                { name: 'Cheeseburger', price: 9.99, quantity: 1 },
-                { name: 'Fries', price: 3.99, quantity: 2 },
-                { name: 'Soda', price: 1.99, quantity: 1 },
-            ],
-        },
-        {
-            seat_id: 2,
-            order_id: 102,
-            items: [
-                { name: 'Pizza', price: 14.99, quantity: 1 },
-                { name: 'Garlic Bread', price: 5.99, quantity: 1 },
-                { name: 'Beer', price: 4.99, quantity: 2 },
-            ],
-        },
-        {
-            seat_id: 3,
-            order_id: 103,
-            items: [
-                { name: 'Salad', price: 8.99, quantity: 1 },
-                { name: 'Soup', price: 6.99, quantity: 1 },
-                { name: 'Water', price: 0.99, quantity: 2 },
-            ],
-        },
-        {
-            seat_id: 4,
-            order_id: 104,
-            items: [
-                { name: 'Steak', price: 19.99, quantity: 1 },
-                { name: 'Baked Potato', price: 4.99, quantity: 1 },
-                { name: 'Wine', price: 12.99, quantity: 1 },
-                { name: 'Cheesecake', price: 6.99, quantity: 1 },
-            ],
-        },
-        {
-            seat_id: 5,
-            order_id: 105,
-            items: [
-                { name: 'Fish and Chips', price: 11.99, quantity: 1 },
-                { name: 'Cole Slaw', price: 2.99, quantity: 1 },
-                { name: 'Iced Tea', price: 1.99, quantity: 2 },
-                { name: 'Apple Pie', price: 5.99, quantity: 1 },
-            ],
-        },
-    ];
+    let orders = [];
 
     onMount(() => {
-        // loadOrders();
-        // setInterval(loadOrders, 1500);
+        loadOrders();
+        setInterval(loadOrders, 1500);
     });
 
     async function loadOrders() {
-        // orders = await getOrders();
+        orders = await getOrders();
     }
 
     async function completeOrder(order) {
-        // const data = await completePayment(order.order_id);
-        // loadOrders();
+        const data = await completePayment(order.order_id);
+        loadOrders();
     }
 
     function getTotal(items) {
-        // return items?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
+        return items?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
     }
 </script>
 
@@ -103,7 +55,10 @@
                     {/each}
                 </tbody>
             </table>
-            <button class="btn btn-primary">Complete order</button>
+            <button
+                class="btn btn-primary"
+                on:click={() => completeOrder(order)}>Complete order</button
+            >
         </div>
     {/each}
 </main>
