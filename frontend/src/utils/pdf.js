@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// import pdfMake from 'pdfmake/build/pdfmake';
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function generatePDF(restaurantName, itemList, table, id) {
     let totalAmount = 12;
@@ -49,5 +49,5 @@ export function generatePDF(restaurantName, itemList, table, id) {
     };
 
     // @ts-ignore
-    pdfMake.createPdf(docDefinition).open();
+    // pdfMake.createPdf(docDefinition).open();
 }

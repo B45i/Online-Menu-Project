@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/';
+const BASE_URL = 'https://smakrt-menu.onrender.com/';
 
 export async function getMenu() {
     const response = await fetch(BASE_URL + 'api/menu');
