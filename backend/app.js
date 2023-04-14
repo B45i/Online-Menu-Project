@@ -47,7 +47,7 @@ app.post('/api/complete-payment', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`app listening on port ${port}`);
 });
 
 //  database functions
