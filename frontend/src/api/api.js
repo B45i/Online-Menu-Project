@@ -31,3 +31,14 @@ export async function completePayment(id) {
     });
     return await response.json();
 }
+
+export async function addFood(food) {
+    const response = await fetch(BASE_URL + 'api/add-food', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(food),
+    });
+    return await response.json();
+}
