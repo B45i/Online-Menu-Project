@@ -1,3 +1,7 @@
 @BASE_URL = http://localhost:3001/api/
 
 GET {{BASE_URL}}menu/
+
+###
+
+DELETE {{BASE_URL}}delete-food/11

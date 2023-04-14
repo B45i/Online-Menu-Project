@@ -42,3 +42,10 @@ export async function addFood(food) {
     });
     return await response.json();
 }
+
+export async function deleteFood(id) {
+    const response = await fetch(BASE_URL + 'api/delete-food/' + id, {
+        method: 'DELETE',
+    });
+    return await response.text;
+}

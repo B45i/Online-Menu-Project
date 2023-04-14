@@ -7,8 +7,8 @@
     let image_url = '';
     let description = '';
 
-    function handleAddFood() {
-        addFood({
+    async function handleAddFood() {
+        await addFood({
             name,
             price,
             image_url,

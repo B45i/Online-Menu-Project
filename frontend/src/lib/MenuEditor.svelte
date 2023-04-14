@@ -1,5 +1,5 @@
 <script>
-    import { getMenu } from '../api/api';
+    import { deleteFood, getMenu } from '../api/api';
     import AddModal from './AddModal.svelte';
     import Navbar from './Navbar.svelte';
     import { onMount } from 'svelte';
@@ -18,8 +18,13 @@
     }
 
     async function closeModal() {
-        loadMenu();
+        await loadMenu();
         showAddModal = false;
+    }
+
+    async function deleteItem(id) {
+        await deleteFood(id);
+        await loadMenu();
     }
 </script>
 
@@ -55,7 +60,9 @@
                     >
                     <td>{item.description}</td>
                     <td>
-                        <button class="btn btn-danger me-1"
+                        <button
+                            class="btn btn-danger me-1"
+                            on:click={() => deleteItem(item.id)}
                             ><i class="bi bi-trash" /></button
                         >
 

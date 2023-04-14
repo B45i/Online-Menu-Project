@@ -46,6 +46,11 @@ app.post('/api/complete-payment', async (req, res) => {
     res.send('Payment success');
 });
 
+app.delete('/api/delete-food/:id', async (req, res) => {
+    deleteFood(req.params.id);
+    res.send('Food deleted');
+});
+
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
@@ -120,4 +125,8 @@ async function completePayment(orderId) {
     await pgClient.query(
         `UPDATE food_order SET payment_completed = true WHERE id = ${orderId};`
     );
+}
+
+async function deleteFood(id) {
+    await pgClient.query(`DELETE FROM food_menu WHERE id = ${id};`);
 }
