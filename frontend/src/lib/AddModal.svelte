@@ -15,6 +15,10 @@
             description,
         });
 
+        handleClose();
+    }
+
+    function handleClose() {
         if (onClose) {
             onClose();
         }
@@ -27,6 +31,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Add new food</h5>
                 <button
+                    on:click={handleClose}
                     type="button"
                     class="btn-close"
                     data-bs-dismiss="modal"
@@ -85,6 +90,7 @@
             </div>
             <div class="modal-footer">
                 <button
+                    on:click={handleClose}
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal">Cancel</button
