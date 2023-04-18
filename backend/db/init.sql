@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS food_menu (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     price INTEGER NOT NULL,
-    image_url VARCHAR(255),
+    image_url VARCHAR(255) DEFAULT 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80',
+    category varchar(255) DEFAULT '',
     description TEXT
 );
 

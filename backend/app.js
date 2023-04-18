@@ -66,8 +66,8 @@ async function getMenu() {
 // add new food to menu
 async function addFood(food) {
     const { rows } = await pgClient.query(
-        `INSERT INTO food_menu (name, price, image_url, description) VALUES ($1, $2, $3, $4) RETURNING *`,
-        [food.name, food.price, food.image_url, food.description]
+        `INSERT INTO food_menu (name, price, image_url, description, category) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+        [food.name, food.price, food.image_url, food.description, food.category]
     );
     return rows;
 }

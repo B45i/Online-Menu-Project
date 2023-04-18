@@ -66,9 +66,9 @@
                             ><i class="bi bi-trash" /></button
                         >
 
-                        <button class="btn btn-primary">
+                        <!-- <button class="btn btn-primary">
                             <i class="bi bi-pencil-square" />
-                        </button>
+                        </button> -->
                     </td>
                 </tr>
             {/each}

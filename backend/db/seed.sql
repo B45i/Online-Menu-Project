@@ -1,17 +1,19 @@
 -- Seed data
 
-INSERT INTO food_menu (name, price, image_url, description)
+INSERT INTO food_menu (name, price, description, category) 
 VALUES 
-    ('Item 1', 10.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 1'),
-    ('Item 2', 12.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 2'),
-    ('Item 3', 15.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 3'),
-    ('Item 4', 8.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 4'),
-    ('Item 5', 5.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 5'),
-    ('Item 6', 9.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 6'),
-    ('Item 7', 14.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 7'),
-    ('Item 8', 19.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 8'),
-    ('Item 9', 25.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 9'),
-    ('Item 10', 11.99, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'Description of item 10');
+    ('Butter chicken', 120, 'A rich and creamy tomato-based chicken curry', 'non_vegetarian'),
+    ('Palak paneer', 110, 'Spinach and cottage cheese curry', 'vegetarian'),
+    ('Chana masala', 90, 'Spiced chickpea curry', 'north_indian'),
+    ('Aloo gobi', 100, 'Potato and cauliflower curry', 'north_indian'),
+    ('Samosa', 20, 'Fried pastry with spiced potato filling', 'snacks'),
+    ('Papdi chaat', 20, 'Crispy dough wafers with yogurt, chutney, and spices', 'chaat'),
+    ('Tandoori chicken', 150, 'Marinated and grilled chicken', 'non_vegetarian'),
+    ('Naan', 25, 'Leavened Indian flatbread', 'breads'),
+    ('Roti', 20, 'Unleavened Indian flatbread', 'breads'),
+    ('Lassi', 25, 'Sweet or savory yogurt-based drink', 'drinks');
+
+
 
 -- Create an entry in the "food_order" table
 INSERT INTO food_order (seat_id, payment_completed) VALUES ('A1', false) RETURNING id;

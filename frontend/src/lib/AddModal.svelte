@@ -1,11 +1,13 @@
 <script>
     import { addFood } from '../api/api';
+    import { foodCategories } from '../data/categories';
     export let onClose;
 
     let name = '';
     let price = '';
     let image_url = '';
     let description = '';
+    let category = '';
 
     async function handleAddFood() {
         await addFood({
@@ -13,6 +15,7 @@
             price,
             image_url,
             description,
+            category,
         });
 
         handleClose();
@@ -85,6 +88,22 @@
                             class="form-control"
                             id="itemName"
                         />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="itemName" class="form-label">Category</label
+                        >
+                        <select
+                            class="form-select"
+                            aria-label="Filer"
+                            bind:value={category}
+                        >
+                            {#each foodCategories as category}
+                                <option value={category.value}
+                                    >{category.title}</option
+                                >
+                            {/each}
+                        </select>
                     </div>
                 </form>
             </div>

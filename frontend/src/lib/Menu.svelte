@@ -3,6 +3,7 @@
     import { getMenu, placeOrder } from '../api/api.js';
     import { useParams } from 'svelte-navigator';
     import Navbar from './Navbar.svelte';
+    import { foodCategories } from '../data/categories.js';
 
     let menuItems = [];
     let showCartItems = false;
@@ -77,6 +78,11 @@
     <!-- menu -->
 
     <div class="menu">
+        <select class="form-select mb-2" aria-label="Filer">
+            {#each foodCategories as category}
+                <option value={category.value}>{category.title}</option>
+            {/each}
+        </select>
         {#each menuItems as item}
             <div class="menu-item">
                 <img class="menu-image" src={item.image_url} alt="" srcset="" />
