@@ -6,9 +6,11 @@
     import { foodCategories } from '../data/categories.js';
 
     let menuItems = [];
+    let filteredItems = [];
     let showCartItems = false;
     let cart = [];
     let total = 0;
+    let selectedCategory = '';
 
     const params = useParams();
 
@@ -16,6 +18,7 @@
 
     async function loadMenu() {
         menuItems = await getMenu();
+        filterItems();
     }
 
     function toggleShowCart() {
@@ -70,6 +73,16 @@
             console.log(error);
         }
     }
+
+    function filterItems() {
+        if (!selectedCategory) {
+            filteredItems = menuItems;
+        } else {
+            filteredItems = menuItems.filter(
+                item => item.category === selectedCategory
+            );
+        }
+    }
 </script>
 
 <main>
@@ -78,12 +91,17 @@
     <!-- menu -->
 
     <div class="menu">
-        <select class="form-select mb-2" aria-label="Filer">
+        <select
+            class="form-select mb-2"
+            aria-label="Filer"
+            bind:value={selectedCategory}
+            on:change={filterItems}
+        >
             {#each foodCategories as category}
                 <option value={category.value}>{category.title}</option>
             {/each}
         </select>
-        {#each menuItems as item}
+        {#each filteredItems as item}
             <div class="menu-item">
                 <img class="menu-image" src={item.image_url} alt="" srcset="" />
 
@@ -100,6 +118,12 @@
                 </button>
             </div>
         {/each}
+
+        {#if filteredItems.length === 0}
+            <div class="text-center">
+                <h4>No items found</h4>
+            </div>
+        {/if}
     </div>
 
     <!-- cart -->
