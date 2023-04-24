@@ -5,7 +5,7 @@ const { groupBy } = require('lodash');
 
 // database connection
 const connectionString =
-    'postgres://playground_9j66_user:JxkOLBnhSsbz8yIfPg3EDQEw8yoqkX8O@dpg-cfa9nopgp3jsh6ehj650-a.singapore-postgres.render.com/playground_9j66';
+    'postgres://playground_bpot_user:yZEjXiwBLj8DVMGuU3V3yfViJeyS4vBr@dpg-ch399ptgk4qarql88leg-a.singapore-postgres.render.com/playground_bpot';
 
 const pgClient = new Client(connectionString + '?ssl=true');
 pgClient.connect();
