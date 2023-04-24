@@ -1,6 +1,5 @@
 export const foodCategories = [
     { title: 'Any', value: '' },
-    { title: 'Indian', value: 'indian' },
     { title: 'Street Food', value: 'street_food' },
     { title: 'Sweets', value: 'sweets' },
     { title: 'Drinks', value: 'drinks' },
