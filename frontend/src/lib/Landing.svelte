@@ -13,7 +13,9 @@
         </div>
     </main>
 
-    <div class="m-4 d-flex gap-2">
+    <div
+        class="m-4 d-flex gap-2 flex-wrap align-items-center justify-content-center"
+    >
         <div class="card shadow-card" style="width: 18rem;">
             <div class="card-body text-center">
                 <h5 class="card-title">Paperless</h5>
