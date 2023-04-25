@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import pdfMake from 'pdfmake/build/pdfmake';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function generatePDF(restaurantName, itemList, table, id, totalAmount) {
