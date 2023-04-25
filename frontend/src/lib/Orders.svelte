@@ -21,7 +21,8 @@
             'ABC Restaurant',
             order.items,
             order.seat_id,
-            order.order_id
+            order.order_id,
+            getTotal(order.items)
         );
         const data = await completePayment(order.order_id);
         loadOrders();
@@ -61,6 +62,10 @@
                             <td>{item.price * item.quantity}</td>
                         </tr>
                     {/each}
+                    <tr>
+                        <th colspan="4">Total</th>
+                        <td>{getTotal(order.items)}</td>
+                    </tr>
                 </tbody>
             </table>
             <button
