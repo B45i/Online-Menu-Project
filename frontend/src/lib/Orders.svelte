@@ -74,6 +74,12 @@
             >
         </div>
     {/each}
+
+    {#if orders.length === 0}
+        <div class="text-center">
+            <h4>No items found</h4>
+        </div>
+    {/if}
 </main>
 
 <style>

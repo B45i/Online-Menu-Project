@@ -1,4 +1,7 @@
-const BASE_URL = 'https://smakrt-menu.onrender.com/';
+// if developement mode then use local backend, or use deployed backend
+const BASE_URL = import.meta.env.DEV
+    ? 'http://localhost:3001/'
+    : 'https://smakrt-menu.onrender.com/';
 
 export async function getMenu() {
     const response = await fetch(BASE_URL + 'api/menu');
