@@ -12,6 +12,40 @@
             <div>The smart menu app for modern restaurants</div>
         </div>
     </main>
+
+    <div class="m-4 d-flex gap-2">
+        <div class="card shadow-card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">Paperless</h5>
+                <p class="card-text">
+                    Eliminate the need for pen and paper and help waiters
+                    remember orders easily.
+                </p>
+            </div>
+        </div>
+
+        <div class="card shadow-card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">Seamless</h5>
+                <p class="card-text">
+                    Customers can scan a QR code to access your online menu and
+                    place orders seamlessly.
+                </p>
+            </div>
+        </div>
+
+        <div class="card shadow-card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">Realtime</h5>
+                <p class="card-text">
+                    Real-time order tracking ensures quick food preparation and
+                    improves efficiency.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark">Lakshmi Shajan - 2023</footer>
 </div>
 
 <style>
@@ -19,6 +53,10 @@
         height: 100vh;
         width: 100vw;
         color: #fff;
+    }
+
+    .shadow-card:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 
     main {
@@ -35,5 +73,13 @@
         padding: 3rem;
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 0.5rem;
+        text-align: center;
     }
 </style>
