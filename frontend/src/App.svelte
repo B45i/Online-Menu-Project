@@ -3,12 +3,13 @@
     import Menu from './lib/Menu.svelte';
     import Orders from './lib/Orders.svelte';
     import MenuList from './lib/MenuEditor.svelte';
+    import Landing from './lib/Landing.svelte';
 </script>
 
 <Router>
     <Route path="/">
-        <div>hello</div></Route
-    >
+        <Landing />
+    </Route>
     <Route path="table/:id">
         <Menu />
     </Route>
