@@ -20,13 +20,14 @@ export function generatePDF(restaurantName, itemList, table, id, totalAmount) {
             {
                 table: {
                     headerRows: 1,
-                    widths: ['*', '*', '*'],
+                    widths: ['*', '*', '*', '*'],
                     body: [
-                        ['Item', 'Quantity', 'Price'],
+                        ['Item', 'Quantity', 'Price', 'Subtotal'],
                         ...itemList.map(item => [
                             item.name,
                             item.quantity,
                             item.price,
+                            item.quantity * item.price,
                         ]),
                     ],
                 },
