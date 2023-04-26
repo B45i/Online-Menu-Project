@@ -7,6 +7,7 @@ import {
     completePayment,
     deleteFood,
     getUser,
+    addUser,
 } from '../services/service.js';
 
 import authMiddleware from '../middleware/authentication.js';
@@ -21,7 +22,7 @@ apiRouter.get('/api/menu', async (req, res) => {
 });
 
 //  add food
-apiRouter.post('/api/add-food', async (req, res) => {
+apiRouter.post('/api/add-food', authMiddleware, async (req, res) => {
     const result = await addFood(req.body);
     return res.json(result);
 });
@@ -37,12 +38,12 @@ apiRouter.post('/api/place-order', async (req, res) => {
     res.json(order);
 });
 
-apiRouter.post('/api/complete-payment', async (req, res) => {
+apiRouter.post('/api/complete-payment', authMiddleware, async (req, res) => {
     completePayment(req.body.id);
     res.send('Payment success');
 });
 
-apiRouter.delete('/api/delete-food/:id', async (req, res) => {
+apiRouter.delete('/api/delete-food/:id', authMiddleware, async (req, res) => {
     deleteFood(req.params.id);
     res.send('Food deleted');
 });
@@ -52,7 +53,6 @@ apiRouter.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        console.log(username);
         const rows = await getUser(username);
 
         // If the user is not found in the database, return an error
@@ -69,6 +69,26 @@ apiRouter.post('/api/login', async (req, res) => {
 
         const token = jwt.sign({ username }, 'ACCESS_TOKEN_SECRET');
         res.json({ token });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+apiRouter.post('/api/signup', async (req, res) => {
+    // Check the username and password in the request body
+    const { username, password } = req.body;
+
+    try {
+        const rows = await getUser(username);
+
+        // if use name exists then throw error
+        if (rows.length) {
+            return res.status(404).json({ message: 'User already exists' });
+        }
+
+        await addUser(username, password);
+
+        res.json({ message: 'user added' });
     } catch (error) {
         console.log(error);
     }

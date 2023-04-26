@@ -89,3 +89,11 @@ export async function getUser(username) {
     );
     return rows;
 }
+
+export async function addUser(username, password) {
+    const { rows } = await pgClient.query(
+        `INSERT INTO users(username, password) VALUES ($1, $2) RETURNING *`,
+        [username, password]
+    );
+    return rows;
+}
