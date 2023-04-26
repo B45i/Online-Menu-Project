@@ -1,5 +1,7 @@
 -- Seed data
 
+INSERT INTO users(username, password) VALUES('admin', 'password')
+
 INSERT INTO food_menu (name, price, description, category) 
 VALUES 
     ('Butter chicken', 120, 'A rich and creamy tomato-based chicken curry', 'non_vegetarian'),

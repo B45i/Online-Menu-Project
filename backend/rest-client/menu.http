@@ -5,3 +5,16 @@ GET {{BASE_URL}}menu/
 ###
 
 DELETE {{BASE_URL}}delete-food/11
+
+###
+
+POST {{BASE_URL}}login/ 
+Content-Type: application/json
+
+{ "username": "admin", "password": "password" }
+
+
+###
+
+GET {{BASE_URL}}orders/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2ODI0NzI0Mzh9.tip6308Eje0_qy2JEJLRHqoyjWFsUhPMOMsGdclh1Wo

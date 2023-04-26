@@ -6,7 +6,12 @@ import {
     placeOrder,
     completePayment,
     deleteFood,
+    getUser,
 } from '../services/service.js';
+
+import authMiddleware from '../middleware/authentication.js';
+
+import jwt from 'jsonwebtoken';
 
 const apiRouter = Router();
 
@@ -22,7 +27,7 @@ apiRouter.post('/api/add-food', async (req, res) => {
 });
 
 //  get all orders
-apiRouter.get('/api/orders', async (req, res) => {
+apiRouter.get('/api/orders', authMiddleware, async (req, res) => {
     const orders = await getOrders();
     return res.json(orders);
 });
@@ -40,6 +45,33 @@ apiRouter.post('/api/complete-payment', async (req, res) => {
 apiRouter.delete('/api/delete-food/:id', async (req, res) => {
     deleteFood(req.params.id);
     res.send('Food deleted');
+});
+
+apiRouter.post('/api/login', async (req, res) => {
+    // Check the username and password in the request body
+    const { username, password } = req.body;
+
+    try {
+        console.log(username);
+        const rows = await getUser(username);
+
+        // If the user is not found in the database, return an error
+        if (!rows.length) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const user = rows[0];
+
+        // Password check
+        if (user.password !== password) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+
+        const token = jwt.sign({ username }, 'ACCESS_TOKEN_SECRET');
+        res.json({ token });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 export default apiRouter;

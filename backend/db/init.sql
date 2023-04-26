@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS food_order_items;
 DROP TABLE IF EXISTS food_menu;
 DROP TABLE IF EXISTS food_order;
+DROP TABLE IF EXISTS users;
 
 
 -- Create food_menu table
@@ -29,4 +30,10 @@ CREATE TABLE IF NOT EXISTS food_order_items (
     quantity INTEGER NOT NULL,
     FOREIGN KEY (order_id) REFERENCES food_order(id) ON DELETE CASCADE,
     FOREIGN KEY (food_id) REFERENCES food_menu(id) ON DELETE CASCADE
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
 );

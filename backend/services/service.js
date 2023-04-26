@@ -1,5 +1,5 @@
 import pg from 'pg';
-import { groupBy } from 'lodash-es';
+import { groupBy, values } from 'lodash-es';
 
 const connectionString =
     'postgres://playground_bpot_user:yZEjXiwBLj8DVMGuU3V3yfViJeyS4vBr@dpg-ch399ptgk4qarql88leg-a.singapore-postgres.render.com/playground_bpot';
@@ -80,4 +80,12 @@ export async function completePayment(orderId) {
 
 export async function deleteFood(id) {
     await pgClient.query(`DELETE FROM food_menu WHERE id = ${id};`);
+}
+
+export async function getUser(username) {
+    const { rows } = await pgClient.query(
+        `SELECT * FROM users WHERE username = $1`,
+        [username]
+    );
+    return rows;
 }
