@@ -1,11 +1,21 @@
-// if developement mode then use local backend, or use deployed backend
-const BASE_URL = import.meta.env.DEV
+import axios from 'axios';
+
+// if development mode then use local backend, or use deployed backend
+axios.defaults.baseURL = import.meta.env.DEV
     ? 'http://localhost:3001/'
     : 'https://smakrt-menu.onrender.com/';
 
+function getHeader() {
+    return {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'), // not setting in initial state
+        },
+    };
+}
+
+let BASE_URL = '';
 export async function getMenu() {
-    const response = await fetch(BASE_URL + 'api/menu');
-    return await response.json();
+    return axios.get('api/menu');
 }
 
 export async function placeOrder(order) {
@@ -20,35 +30,21 @@ export async function placeOrder(order) {
 }
 
 export async function getOrders() {
-    const response = await fetch(BASE_URL + 'api/orders');
-    return await response.json();
+    return axios.get('api/orders', getHeader());
 }
 
 export async function completePayment(id) {
-    const response = await fetch(BASE_URL + 'api/complete-payment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: id }),
-    });
-    return await response.json();
+    return axios.post('api/complete-payment', { id }, getHeader());
 }
 
 export async function addFood(food) {
-    const response = await fetch(BASE_URL + 'api/add-food', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(food),
-    });
-    return await response.json();
+    return await axios.post('api/add-food', food, getHeader());
 }
 
 export async function deleteFood(id) {
-    const response = await fetch(BASE_URL + 'api/delete-food/' + id, {
-        method: 'DELETE',
-    });
-    return await response.text;
+    return await axios.delete('api/delete-food/' + id, getHeader());
+}
+
+export async function login(username, password) {
+    return await axios.post('api/login', { username, password });
 }

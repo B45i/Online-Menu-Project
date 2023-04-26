@@ -10,7 +10,8 @@
     onMount(loadMenu);
 
     async function loadMenu() {
-        menuItems = await getMenu();
+        const response = await getMenu();
+        menuItems = response.data;
     }
 
     async function openModal() {
@@ -82,7 +83,10 @@
 
 <style>
     .image-thumbnail {
-        max-height: 3rem;
+        height: 3rem;
+        width: 4rem;
+        object-fit: cover;
+        border-radius: 5px;
     }
     td {
         vertical-align: middle;

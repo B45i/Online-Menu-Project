@@ -17,7 +17,8 @@
     onMount(loadMenu);
 
     async function loadMenu() {
-        menuItems = await getMenu();
+        const response = await getMenu();
+        menuItems = response.data;
         filterItems();
     }
 
@@ -107,7 +108,9 @@
 
                 <div class="flex-grow-1">
                     <div class="fw-bold">{item.name}</div>
-                    <div class="badge text-bg-success">Rs. {item.price}</div>
+                    <div class="badge rounded-pill text-bg-success text-white">
+                        Rs. {item.price}
+                    </div>
                 </div>
 
                 <button
@@ -153,7 +156,9 @@
                 >{showCartItems ? 'Hide cart' : 'Show cart'}</button
             >
             <div class="d-flex align-items-center gap-3">
-                <span class="badge text-bg-success">Total: {total}</span>
+                <span class="badge rounded-pill text-bg-success text-white"
+                    >Total: {total}</span
+                >
                 <button on:click={handlePlaceOrder} class="btn btn-primary"
                     >Place order</button
                 >
@@ -180,7 +185,9 @@
     }
 
     .menu-image {
-        max-width: 4rem;
+        width: 5rem;
+        height: 3rem;
+        object-fit: cover;
         border-radius: 5px;
     }
 

@@ -13,7 +13,8 @@
     });
 
     async function loadOrders() {
-        orders = await getOrders();
+        let response = await getOrders();
+        orders = response.data;
     }
 
     async function completeOrder(order) {

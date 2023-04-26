@@ -53,6 +53,7 @@ apiRouter.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
+        console.log(username, password);
         const rows = await getUser(username);
 
         // If the user is not found in the database, return an error
@@ -64,7 +65,9 @@ apiRouter.post('/api/login', async (req, res) => {
 
         // Password check
         if (user.password !== password) {
-            return res.status(401).json({ message: 'Unauthorized' });
+            return res
+                .status(401)
+                .json({ message: 'User name or password is correct' });
         }
 
         const token = jwt.sign({ username }, 'ACCESS_TOKEN_SECRET');

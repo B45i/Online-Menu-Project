@@ -4,12 +4,17 @@
     import Orders from './lib/Orders.svelte';
     import MenuList from './lib/MenuEditor.svelte';
     import Landing from './lib/Landing.svelte';
+    import Login from './lib/Login.svelte';
 </script>
 
 <Router>
+    <Route path="/admin/login">
+        <Login />
+    </Route>
     <Route path="/">
         <Landing />
     </Route>
+
     <Route path="table/:id">
         <Menu />
     </Route>
