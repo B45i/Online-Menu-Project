@@ -1,6 +1,20 @@
 import dayjs from 'dayjs';
+import bold from './fonts/Roboto-Medium.ttf';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+window.pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+// const fonts = {
+//     Roboto: {
+//         normal: './fonts/Roboto-Regular.ttf',
+//         bold: bold,
+//         italics: './fonts/Roboto-Italic.ttf',
+//         bolditalics: './fonts/Roboto-MediumItalic.ttf',
+//     },
+// };
 import pdfMake from 'pdfmake/build/pdfmake';
+// @ts-ignore
+// pdfMake.vfs = fonts;
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export function generatePDF(restaurantName, itemList, table, id, totalAmount) {

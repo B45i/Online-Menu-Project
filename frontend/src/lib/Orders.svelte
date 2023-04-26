@@ -24,7 +24,7 @@
             order.order_id,
             getTotal(order.items)
         );
-        const data = await completePayment(order.order_id);
+        // const data = await completePayment(order.order_id);
         loadOrders();
     }
 
