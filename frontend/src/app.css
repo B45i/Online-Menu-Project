@@ -18,3 +18,7 @@ main {
     height: 100vh;
     max-height: 100vh;
 }
+
+.btn {
+    text-transform: none !important;
+}

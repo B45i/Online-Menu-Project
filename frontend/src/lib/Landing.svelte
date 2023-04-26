@@ -1,8 +1,14 @@
+<script>
+    import { Link } from 'svelte-navigator';
+</script>
+
 <div class="landing">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="navbar-brand">DineDigit</div>
-        </div>
+    <nav class="navbar navbar-dark bg-dark py-1 px-2">
+        <div class="navbar-brand">DineDigit</div>
+
+        <Link to="/admin/login">
+            <button class="btn btn-secondary btn-rounded">Admin Login</button>
+        </Link>
     </nav>
 
     <main class="d-flex justify-content-center align-items-center">
