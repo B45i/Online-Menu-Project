@@ -1,18 +1,8 @@
 import dayjs from 'dayjs';
-// import bold from './fonts/Roboto-Medium.ttf';
 
-// const fonts = {
-//     Roboto: {
-//         normal: './fonts/Roboto-Regular.ttf',
-//         bold: bold,
-//         italics: './fonts/Roboto-Italic.ttf',
-//         bolditalics: './fonts/Roboto-MediumItalic.ttf',
-//     },
-// };
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from './font';
 
-// @ts-ignore
 pdfMake.vfs = pdfFonts;
 
 export function generatePDF(restaurantName, itemList, table, id, totalAmount) {
