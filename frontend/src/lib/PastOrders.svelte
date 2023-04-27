@@ -5,6 +5,7 @@
     import Navbar from './Navbar.svelte';
     import RouteGuard from './RouteGuard.svelte';
     import { getTotal } from '../utils/finance';
+    import dayjs from 'dayjs';
 
     let orders = [];
     let loadInterval;
@@ -42,6 +43,9 @@
         <div class="p-4 border m-3 rounded shadow">
             <div class="d-flex justify-content-between mb-2 fw-bold">
                 <div>Table: {order.seat_id}</div>
+                <div>
+                    {dayjs(order.order_time).format('D-MM-YYYY  hh:mm A')}
+                </div>
                 <div>Order ID: {order.order_id}</div>
             </div>
             <table class="table border">

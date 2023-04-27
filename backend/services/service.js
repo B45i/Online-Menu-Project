@@ -29,6 +29,7 @@ export async function getOrders(completed = false) {
         SELECT 
             food_order.id as order_id,
             food_order.seat_id,
+            food_order.order_time,
             food_order_items.food_id,
             food_menu.name,
             food_menu.price,
@@ -45,6 +46,7 @@ export async function getOrders(completed = false) {
     const result = Object.values(groupedOrders).map(order => ({
         order_id: order[0].order_id,
         seat_id: order[0].seat_id,
+        order_time: order[0].order_time,
         items: order
             .map(item => ({
                 food_id: item.food_id,
