@@ -87,7 +87,7 @@
 </script>
 
 <main>
-    <Navbar isAdmin={false} />
+    <Navbar isAdmin={false} tableId={$params.id} />
 
     <!-- menu -->
 

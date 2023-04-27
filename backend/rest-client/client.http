@@ -41,3 +41,7 @@ Content-Type: application/json
 ### 
 
 GET {{BASE_URL}}feedback/
+
+###
+
+GET {{BASE_URL}}my-orders/12

@@ -3,11 +3,14 @@
     import { useNavigate } from 'svelte-navigator';
 
     export let isAdmin = true;
+    export let tableId = null;
+
     let restaurantName = 'Hotel ABC';
 
     const navigate = useNavigate();
 
     function logout() {
+        console.log(tableId);
         localStorage.removeItem('token');
         navigate('/admin/login');
     }
@@ -43,8 +46,16 @@
                     >Logout</button
                 >
             {:else}
-                <Link class="btn btn-sm btn-sm btn-secondary " to="/feedback"
-                    >Submit feedback</Link
+                <Link
+                    class="btn btn-sm btn-sm btn-secondary "
+                    to={`/feedback/${tableId}`}>Submit feedback</Link
+                >
+
+                <Link
+                    class="btn btn-sm btn-sm btn-secondary "
+                    to={`/my-orders/${tableId}`}
+                >
+                    Orders</Link
                 >
             {/if}
         </div>

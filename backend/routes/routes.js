@@ -11,6 +11,7 @@ import {
     updateStatus,
     addFeedback,
     getFeedbacks,
+    getMyOrders,
 } from '../services/service.js';
 
 import authMiddleware from '../middleware/authentication.js';
@@ -46,15 +47,17 @@ apiRouter.post('/api/place-order', async (req, res) => {
     res.json(order);
 });
 
-apiRouter.post('/api/complete-payment', authMiddleware, async (req, res) => {
-    completePayment(req.body.id);
-    res.send('Payment success');
+apiRouter.post('/api/feedback', async (req, res) => {
+    const result = await addFeedback(req.body);
+    res.json({ message: 'Feedback submitted' });
 });
 
-apiRouter.delete('/api/delete-food/:id', authMiddleware, async (req, res) => {
-    deleteFood(req.params.id);
-    res.send('Food deleted');
+apiRouter.get('/api/my-orders/:id', async (req, res) => {
+    const orders = await getMyOrders(req.params.id);
+    res.json(orders);
 });
+
+// admin APIs
 
 apiRouter.post('/api/login', async (req, res) => {
     // Check the username and password in the request body
@@ -114,14 +117,19 @@ apiRouter.post('/api/update-status', authMiddleware, async (req, res) => {
     res.json({ message: 'Status updated' });
 });
 
-apiRouter.post('/api/feedback', async (req, res) => {
-    const result = await addFeedback(req.body);
-    res.json({ message: 'Feedback submitted' });
-});
-
 apiRouter.get('/api/feedback', authMiddleware, async (req, res) => {
     const result = await getFeedbacks();
     res.json(result);
+});
+
+apiRouter.post('/api/complete-payment', authMiddleware, async (req, res) => {
+    completePayment(req.body.id);
+    res.send('Payment success');
+});
+
+apiRouter.delete('/api/delete-food/:id', authMiddleware, async (req, res) => {
+    deleteFood(req.params.id);
+    res.send('Food deleted');
 });
 
 export default apiRouter;

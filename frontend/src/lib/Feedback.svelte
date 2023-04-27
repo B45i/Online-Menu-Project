@@ -1,12 +1,14 @@
 <script>
     import { addFeedback } from '../api/api';
     import Navbar from './Navbar.svelte';
+    import { useParams } from 'svelte-navigator';
+
     let rating = 5;
     let feedback = '';
-    let seatId = '';
     let feedbackDone = false;
+    const params = useParams();
 
-    $: allowSubmit = rating && feedback && seatId;
+    $: allowSubmit = rating && feedback;
 
     async function handleFeedback(e) {
         e.preventDefault();
@@ -14,7 +16,7 @@
             const response = await addFeedback({
                 rating,
                 feedback_text: feedback,
-                seat_id: seatId,
+                seat_id: $params.id,
             });
 
             feedbackDone = true;
@@ -22,7 +24,7 @@
     }
 </script>
 
-<Navbar isAdmin={false} />
+<Navbar isAdmin={false} tableId={$params.id} />
 <div class="container mt-3">
     <form class="feedback-form mx-auto">
         {#if feedbackDone}
@@ -42,15 +44,6 @@
                         <option value="4">Four</option>
                         <option value="5">Five</option>
                     </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="username" class="form-label">Table:</label>
-                    <input
-                        bind:value={seatId}
-                        type="text"
-                        class="form-control"
-                    />
                 </div>
 
                 <div class="mb-3">

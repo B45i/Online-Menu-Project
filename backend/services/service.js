@@ -60,6 +60,45 @@ export async function getOrders(completed = false) {
     return result;
 }
 
+export async function getMyOrders(seatId) {
+    const { rows } = await pgClient.query(
+        `
+        SELECT 
+            food_order.id as order_id,
+            food_order.seat_id,
+            food_order_items.food_id,
+            food_menu.name,
+            food_menu.price,
+            food_order_items.quantity,
+            food_order_items.status,
+            food_order_items.id as order_item_id
+        FROM food_order
+        JOIN food_order_items ON food_order.id = food_order_items.order_id
+        JOIN food_menu ON food_order_items.food_id = food_menu.id
+		WHERE PAYMENT_COMPLETED IS FALSE AND food_order.seat_id = $1
+    `,
+        [seatId]
+    );
+
+    const groupedOrders = groupBy(rows, 'order_id');
+    const result = Object.values(groupedOrders).map(order => ({
+        order_id: order[0].order_id,
+        seat_id: order[0].seat_id,
+        items: order
+            .map(item => ({
+                food_id: item.food_id,
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price,
+                status: item.status,
+                order_item_id: item.order_item_id,
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name)),
+    }));
+
+    return result;
+}
+
 // place order
 export async function placeOrder(order) {
     const { seat_id, items } = order;

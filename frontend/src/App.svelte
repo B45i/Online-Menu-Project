@@ -9,6 +9,7 @@
     import Feedback from './lib/Feedback.svelte';
     import ViewFeedbacks from './lib/ViewFeedbacks.svelte';
     import PastOrders from './lib/PastOrders.svelte';
+    import MyOrders from './lib/MyOrders.svelte';
 </script>
 
 <Router>
@@ -20,7 +21,11 @@
         <Menu />
     </Route>
 
-    <Route path="/feedback">
+    <Route path="my-orders/:id">
+        <MyOrders />
+    </Route>
+
+    <Route path="/feedback/:id">
         <Feedback />
     </Route>
 
