@@ -48,3 +48,7 @@ export async function addUser(username, password) {
 export async function updateStatus(id, status) {
     return await axios.post('api/update-status', { id, status }, getHeader());
 }
+
+export async function addFeedback(feedback) {
+    return await axios.post('api/feedback', feedback);
+}

@@ -1,11 +1,19 @@
 <script>
+    import { addFeedback } from '../api/api';
     import Navbar from './Navbar.svelte';
     let rating = 5;
     let feedback = '';
+    let seatId = '';
+
+    $: allowSubmit = rating && feedback && seatId;
 
     function handleFeedback(e) {
         e.preventDefault();
-        console.log(rating, feedback);
+        addFeedback({
+            rating,
+            feedback_text: feedback,
+            seat_id: seatId,
+        });
     }
 </script>
 
@@ -15,7 +23,7 @@
         <form class="login-form border p-4 shadow rounded bg-white">
             <h3 class="text-center mb-3">Submit feedback</h3>
             <div class="mb-3">
-                <label for="username" class="form-label">Rating :</label>
+                <label for="username" class="form-label">Rating:</label>
 
                 <select bind:value={rating} class="select form-select">
                     <option value="1">One</option>
@@ -27,7 +35,12 @@
             </div>
 
             <div class="mb-3">
-                <label for="username" class="form-label">Feedback :</label>
+                <label for="username" class="form-label">Table:</label>
+                <input bind:value={seatId} type="text" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Feedback:</label>
 
                 <textarea
                     bind:value={feedback}
@@ -37,7 +50,11 @@
                 />
             </div>
 
-            <button on:click={handleFeedback} class="btn btn-primary mb-2">
+            <button
+                disabled={!allowSubmit}
+                on:click={handleFeedback}
+                class="btn btn-primary mb-2"
+            >
                 Submit
             </button>
 
