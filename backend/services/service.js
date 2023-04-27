@@ -45,14 +45,16 @@ export async function getOrders() {
     const result = Object.values(groupedOrders).map(order => ({
         order_id: order[0].order_id,
         seat_id: order[0].seat_id,
-        items: order.map(item => ({
-            food_id: item.food_id,
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price,
-            status: item.status,
-            order_item_id: item.order_item_id,
-        })),
+        items: order
+            .map(item => ({
+                food_id: item.food_id,
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price,
+                status: item.status,
+                order_item_id: item.order_item_id,
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name)),
     }));
 
     return result;
