@@ -8,6 +8,7 @@
     import AddUser from './lib/AddUser.svelte';
     import Feedback from './lib/Feedback.svelte';
     import ViewFeedbacks from './lib/ViewFeedbacks.svelte';
+    import PastOrders from './lib/PastOrders.svelte';
 </script>
 
 <Router>
@@ -26,9 +27,15 @@
     <Route path="/admin/login">
         <Login />
     </Route>
+
     <Route path="admin/orders">
         <Orders />
     </Route>
+
+    <Route path="admin/past-orders">
+        <PastOrders />
+    </Route>
+
     <Route path="/admin/menu">
         <MenuList />
     </Route>

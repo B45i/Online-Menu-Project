@@ -22,6 +22,10 @@
                     >Orders</Link
                 >
 
+                <Link class="btn btn-sm btn-secondary " to="/admin/past-orders"
+                    >Past Orders</Link
+                >
+
                 <Link class="btn btn-sm btn-secondary " to="/admin/menu"
                     >Edit Menu</Link
                 >
@@ -34,7 +38,8 @@
                     class="btn btn-sm btn-secondary "
                     to="/admin/view-feedback">View feedbacks</Link
                 >
-                <button on:click={logout} class="btn btn-sm btn-secondary"
+
+                <button on:click={logout} class="btn btn-sm btn-danger"
                     >Logout</button
                 >
             {:else}

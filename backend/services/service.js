@@ -24,7 +24,7 @@ export async function addFood(food) {
 }
 
 // get orders
-export async function getOrders() {
+export async function getOrders(completed = false) {
     const { rows } = await pgClient.query(`
         SELECT 
             food_order.id as order_id,
@@ -38,7 +38,7 @@ export async function getOrders() {
         FROM food_order
         JOIN food_order_items ON food_order.id = food_order_items.order_id
         JOIN food_menu ON food_order_items.food_id = food_menu.id
-		WHERE PAYMENT_COMPLETED IS false
+		WHERE PAYMENT_COMPLETED IS ${completed ? 'TRUE' : 'FALSE'}
     `);
 
     const groupedOrders = groupBy(rows, 'order_id');

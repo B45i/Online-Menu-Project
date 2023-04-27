@@ -25,6 +25,10 @@ export async function getOrders() {
     return axios.get('api/orders', getHeader());
 }
 
+export async function getPastOrders() {
+    return axios.get('api/past-orders', getHeader());
+}
+
 export async function completePayment(id) {
     return axios.post('api/complete-payment', { id }, getHeader());
 }

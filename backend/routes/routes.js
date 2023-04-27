@@ -36,6 +36,11 @@ apiRouter.get('/api/orders', authMiddleware, async (req, res) => {
     return res.json(orders);
 });
 
+apiRouter.get('/api/past-orders', authMiddleware, async (req, res) => {
+    const orders = await getOrders(true);
+    return res.json(orders);
+});
+
 apiRouter.post('/api/place-order', async (req, res) => {
     const order = await placeOrder(req.body);
     res.json(order);
