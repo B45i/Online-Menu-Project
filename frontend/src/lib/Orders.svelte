@@ -5,6 +5,7 @@
     import { completePayment, getOrders, updateStatus } from '../api/api';
     import Navbar from './Navbar.svelte';
     import RouteGuard from './RouteGuard.svelte';
+    import { getTotal } from '../utils/finance';
 
     let orders = [];
     let loadInterval;
@@ -34,10 +35,6 @@
         );
         const data = await completePayment(order.order_id);
         loadOrders();
-    }
-
-    function getTotal(items) {
-        return items?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
     }
 
     async function handleStatusChange(id, status) {

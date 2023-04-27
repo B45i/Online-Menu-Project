@@ -4,6 +4,7 @@
     import { getPastOrders } from '../api/api';
     import Navbar from './Navbar.svelte';
     import RouteGuard from './RouteGuard.svelte';
+    import { getTotal } from '../utils/finance';
 
     let orders = [];
     let loadInterval;
@@ -27,10 +28,6 @@
     async function loadOrders() {
         let response = await getPastOrders();
         orders = response.data;
-    }
-
-    function getTotal(items) {
-        return items?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
     }
 </script>
 

@@ -21,6 +21,17 @@ export async function placeOrder(order) {
     return axios.post('api/place-order', order);
 }
 
+export async function addFeedback(feedback) {
+    return await axios.post('api/feedback', feedback);
+}
+
+export async function getMyOrders(id) {
+    if (!id) return null;
+    return await axios.get('api/my-orders/' + id);
+}
+
+//  admin api's
+
 export async function getOrders() {
     return axios.get('api/orders', getHeader());
 }
@@ -50,11 +61,7 @@ export async function addUser(username, password) {
 }
 
 export async function updateStatus(id, status) {
-    return await axios.post('api/update-status', { id, status }, getHeader());
-}
-
-export async function addFeedback(feedback) {
-    return await axios.post('api/feedback', feedback);
+    return await axios.post('api/update-status', { id, status });
 }
 
 export async function getFeedbacks() {

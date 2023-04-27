@@ -57,6 +57,12 @@ apiRouter.get('/api/my-orders/:id', async (req, res) => {
     res.json(orders);
 });
 
+apiRouter.post('/api/update-status', async (req, res) => {
+    const { id, status } = req.body;
+    await updateStatus(id, status);
+    res.json({ message: 'Status updated' });
+});
+
 // admin APIs
 
 apiRouter.post('/api/login', async (req, res) => {
@@ -91,7 +97,7 @@ apiRouter.post('/api/login', async (req, res) => {
     }
 });
 
-apiRouter.post('/api/signup', async (req, res) => {
+apiRouter.post('/api/signup', authMiddleware, async (req, res) => {
     // Check the username and password in the request body
     const { username, password } = req.body;
 
@@ -109,12 +115,6 @@ apiRouter.post('/api/signup', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-});
-
-apiRouter.post('/api/update-status', authMiddleware, async (req, res) => {
-    const { id, status } = req.body;
-    await updateStatus(id, status);
-    res.json({ message: 'Status updated' });
 });
 
 apiRouter.get('/api/feedback', authMiddleware, async (req, res) => {
