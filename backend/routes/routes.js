@@ -9,6 +9,7 @@ import {
     getUser,
     addUser,
     updateStatus,
+    addFeedback,
 } from '../services/service.js';
 
 import authMiddleware from '../middleware/authentication.js';
@@ -105,6 +106,11 @@ apiRouter.post('/api/update-status', authMiddleware, async (req, res) => {
     const { id, status } = req.body;
     await updateStatus(id, status);
     res.json({ message: 'Status updated' });
+});
+
+apiRouter.post('/api/feedback', async (req, res) => {
+    const result = await addFeedback(req.body);
+    res.json({ message: 'Feedback submitted' });
 });
 
 export default apiRouter;

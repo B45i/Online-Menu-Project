@@ -38,12 +38,10 @@ CREATE TABLE IF NOT EXISTS feedbacks (
     id SERIAL PRIMARY KEY,
     rating INTEGER NOT NULL,
     feedback_text TEXT NOT NULL,
-    date DATE NOT NULL,
-    time TIME NOT NULL,
-    seat_id INTEGER NOT NULL,
-    -- add other necessary fields here
-    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    seat_id INTEGER NOT NULL
 );
+
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,

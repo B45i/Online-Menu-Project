@@ -107,3 +107,13 @@ export async function updateStatus(id, status) {
         `UPDATE food_order_items SET status = '${status}' WHERE id = ${id};`
     );
 }
+
+export async function addFeedback(feedback) {
+    const { rows } = await pgClient.query(
+        `INSERT INTO feedbacks (rating, feedback_text, seat_id)
+        VALUES
+        ($1, $2, $3) RETURNING *`,
+        [feedback.rating, feedback.feedback_text, feedback.seat_id]
+    );
+    return rows;
+}

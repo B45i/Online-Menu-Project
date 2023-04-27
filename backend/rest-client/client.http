@@ -26,3 +26,14 @@ Content-Type: application/json
 
 GET {{BASE_URL}}orders/
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJpYXQiOjE2ODI0NzI0Mzh9.tip6308Eje0_qy2JEJLRHqoyjWFsUhPMOMsGdclh1Wo
+
+### 
+
+POST {{BASE_URL}}feedback/
+Content-Type: application/json
+
+{
+    "rating": 4, 
+    "feedback_text": "Good Food", 
+    "seat_id": 12
+}
