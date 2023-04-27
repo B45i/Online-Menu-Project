@@ -27,8 +27,11 @@ export function generatePDF(restaurantName, itemList, table, id, totalAmount) {
                             item.name,
                             item.quantity,
                             item.price,
-                            item.quantity * item.price,
+                            // item.quantity * item.price,
+                            item.status === 'CANCELLED' ? 0 : item.quantity * item.price,
+
                         ]),
+
                     ],
                 },
             },
