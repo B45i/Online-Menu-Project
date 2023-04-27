@@ -31,6 +31,10 @@
                 <button on:click={logout} class="btn btn-secondary"
                     >Logout</button
                 >
+            {:else}
+                <Link class="btn btn-sm btn-secondary " to="/feedback"
+                    >Submit feedback</Link
+                >
             {/if}
         </div>
     </div>

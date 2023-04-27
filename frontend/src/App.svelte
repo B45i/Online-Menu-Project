@@ -6,6 +6,7 @@
     import Landing from './lib/Landing.svelte';
     import Login from './lib/Login.svelte';
     import AddUser from './lib/AddUser.svelte';
+    import Feedback from './lib/Feedback.svelte';
 </script>
 
 <Router>
@@ -27,6 +28,10 @@
     </Route>
     <Route path="/admin/add-user">
         <AddUser />
+    </Route>
+
+    <Route path="/feedback">
+        <Feedback />
     </Route>
 
     <Route path="/*">

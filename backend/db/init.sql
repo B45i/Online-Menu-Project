@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS food_order_items;
 DROP TABLE IF EXISTS food_menu;
 DROP TABLE IF EXISTS food_order;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS feedbacks
 
 
 -- Create food_menu table
@@ -31,6 +32,17 @@ CREATE TABLE IF NOT EXISTS food_order_items (
     status VARCHAR(255) DEFAULT 'PENDING',
     FOREIGN KEY (order_id) REFERENCES food_order(id) ON DELETE CASCADE,
     FOREIGN KEY (food_id) REFERENCES food_menu(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS feedbacks (
+    id SERIAL PRIMARY KEY,
+    rating INTEGER NOT NULL,
+    feedback_text TEXT NOT NULL,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    seat_id INTEGER NOT NULL,
+    -- add other necessary fields here
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE users (

@@ -103,7 +103,6 @@ apiRouter.post('/api/signup', async (req, res) => {
 
 apiRouter.post('/api/update-status', authMiddleware, async (req, res) => {
     const { id, status } = req.body;
-    console.log(id, status);
     await updateStatus(id, status);
     res.json({ message: 'Status updated' });
 });
