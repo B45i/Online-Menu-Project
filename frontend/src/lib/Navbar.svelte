@@ -1,8 +1,16 @@
 <script>
     import { Link } from 'svelte-navigator';
+    import { useNavigate } from 'svelte-navigator';
 
     export let isAdmin = true;
     let restaurantName = 'Hotel ABC';
+
+    const navigate = useNavigate();
+
+    function logout() {
+        localStorage.removeItem('token');
+        navigate('/admin/login');
+    }
 </script>
 
 <nav class="navbar navbar-dark bg-black">
@@ -16,6 +24,9 @@
 
                 <Link class="btn  btn-secondary " to="/admin/menu"
                     >Edit Menu</Link
+                >
+                <button on:click={logout} class="btn btn-secondary"
+                    >Logout</button
                 >
             {/if}
         </div>

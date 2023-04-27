@@ -67,10 +67,13 @@ apiRouter.post('/api/login', async (req, res) => {
         if (user.password !== password) {
             return res
                 .status(401)
-                .json({ message: 'User name or password is correct' });
+                .json({ message: 'Username or password is incorrect' });
         }
 
-        const token = jwt.sign({ username }, 'ACCESS_TOKEN_SECRET');
+        const token = jwt.sign(
+            { username },
+            '28ee283c-e4b5-11ed-b5ea-0242ac120002'
+        );
         res.json({ token });
     } catch (error) {
         console.log(error);

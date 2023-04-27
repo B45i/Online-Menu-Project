@@ -1,17 +1,24 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import { generatePDF } from '../utils/pdf';
 
     import { completePayment, getOrders } from '../api/api';
     import Navbar from './Navbar.svelte';
+    import RouteGuard from './RouteGuard.svelte';
 
     let orders = [];
+    let loadInterval;
 
     onMount(() => {
         loadOrders();
-        setInterval(loadOrders, 1500);
+        loadInterval = setInterval(loadOrders, 1500);
     });
 
+    onDestroy(() => {
+        if (loadInterval) {
+            clearInterval(loadInterval);
+        }
+    });
     async function loadOrders() {
         let response = await getOrders();
         orders = response.data;
@@ -35,6 +42,7 @@
 </script>
 
 <main>
+    <RouteGuard />
     <Navbar isAdmin={true} />
     <h4 class="m-3">Orders:</h4>
     {#each orders as order}

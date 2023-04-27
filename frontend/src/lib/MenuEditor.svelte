@@ -3,6 +3,7 @@
     import AddModal from './AddModal.svelte';
     import Navbar from './Navbar.svelte';
     import { onMount } from 'svelte';
+    import RouteGuard from './RouteGuard.svelte';
 
     let menuItems = [];
     let showAddModal = false;
@@ -29,6 +30,7 @@
     }
 </script>
 
+<RouteGuard />
 <Navbar isAdmin={true} />
 <div class="m-2">
     <div class="py-3">
