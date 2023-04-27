@@ -12,6 +12,8 @@ import {
     addFeedback,
     getFeedbacks,
     getMyOrders,
+    getExistingOrder,
+    appendOrder,
 } from '../services/service.js';
 
 import authMiddleware from '../middleware/authentication.js';
@@ -43,8 +45,22 @@ apiRouter.get('/api/past-orders', authMiddleware, async (req, res) => {
 });
 
 apiRouter.post('/api/place-order', async (req, res) => {
-    const order = await placeOrder(req.body);
-    res.json(order);
+    try {
+        const existingOrder = await getExistingOrder(req.body.seat_id);
+        if (existingOrder.length) {
+            console.log('appending order');
+            const orderId = existingOrder[0].id;
+            const order = await appendOrder(orderId, req.body);
+            res.json(order);
+        } else {
+            console.log('new order');
+            const order = await placeOrder(req.body);
+            res.json(order);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
 });
 
 apiRouter.post('/api/feedback', async (req, res) => {

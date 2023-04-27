@@ -117,6 +117,26 @@ export async function placeOrder(order) {
     await pgClient.query(orderQuery);
 }
 
+export async function appendOrder(orderId, order) {
+    const { items } = order;
+
+    const itemsString = items
+        .map(item => `(${item.id}, ${orderId}, ${item.quantity})`)
+        .join(',');
+
+    const orderQuery = `INSERT INTO food_order_items (food_id, order_id, quantity)
+                        VALUES ${itemsString}`;
+    await pgClient.query(orderQuery);
+}
+
+export async function getExistingOrder(seatId) {
+    const { rows } = await pgClient.query(
+        `SELECT * FROM food_order WHERE payment_completed IS FALSE AND seat_id = $1`,
+        [seatId]
+    );
+    return rows;
+}
+
 export async function completePayment(orderId) {
     await pgClient.query(
         `UPDATE food_order SET payment_completed = true WHERE id = ${orderId};`
