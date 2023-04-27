@@ -24,7 +24,7 @@
 
 <Navbar isAdmin={false} />
 <div class="container mt-3">
-    <form action="">
+    <form class="feedback-form mx-auto">
         {#if feedbackDone}
             <div class="alert alert-success">
                 Feedback submitted successfully
@@ -75,3 +75,9 @@
         {/if}
     </form>
 </div>
+
+<style>
+    .feedback-form {
+        max-width: 500px;
+    }
+</style>

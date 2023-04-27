@@ -42,7 +42,7 @@
 <RouteGuard />
 <Navbar />
 <div class="container mt-3">
-    <form class="login-form border p-4 shadow rounded bg-white">
+    <form class="login-form border p-4 shadow rounded bg-white mx-auto">
         <h3 class="text-center mb-3">Add new admin user</h3>
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
@@ -99,3 +99,9 @@
         {/if}
     </form>
 </div>
+
+<style>
+    .login-form {
+        max-width: 500px;
+    }
+</style>
