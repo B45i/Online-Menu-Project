@@ -10,7 +10,7 @@
 
     onMount(() => {
         fetchMyOrders();
-        // setInterval(fetchMyOrders, 1500);
+        setInterval(fetchMyOrders, 1500);
     });
 
     async function fetchMyOrders() {
