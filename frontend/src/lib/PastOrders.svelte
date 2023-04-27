@@ -69,7 +69,7 @@
                     {/each}
                     <tr>
                         <th colspan="4">Total</th>
-                        <td>{getTotal(order.items)}</td>
+                        <td class="fw-bold">{getTotal(order.items)}</td>
                     </tr>
                 </tbody>
             </table>
