@@ -65,7 +65,11 @@
                             <td>{item.name}</td>
                             <td>{item.price}</td>
                             <td>{item.quantity}</td>
-                            <td>{item.price * item.quantity}</td>
+                            <td
+                                >{item.status !== 'CANCELLED'
+                                    ? item.price * item.quantity
+                                    : 0}</td
+                            >
                         </tr>
                     {/each}
                     <tr>
