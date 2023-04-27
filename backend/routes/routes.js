@@ -94,7 +94,7 @@ apiRouter.post('/api/signup', async (req, res) => {
 
         await addUser(username, password);
 
-        res.json({ message: 'user added' });
+        res.json({ message: 'user added successfully' });
     } catch (error) {
         console.log(error);
     }

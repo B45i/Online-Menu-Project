@@ -5,6 +5,7 @@
     import MenuList from './lib/MenuEditor.svelte';
     import Landing from './lib/Landing.svelte';
     import Login from './lib/Login.svelte';
+    import AddUser from './lib/AddUser.svelte';
 </script>
 
 <Router>
@@ -23,6 +24,9 @@
     </Route>
     <Route path="/admin/menu">
         <MenuList />
+    </Route>
+    <Route path="/admin/add-user">
+        <AddUser />
     </Route>
 
     <Route path="/*">
