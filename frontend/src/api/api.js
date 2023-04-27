@@ -8,25 +8,17 @@ axios.defaults.baseURL = import.meta.env.DEV
 function getHeader() {
     return {
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token'), // not setting in initial state
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
     };
 }
 
-let BASE_URL = '';
 export async function getMenu() {
     return axios.get('api/menu');
 }
 
 export async function placeOrder(order) {
-    const response = await fetch(BASE_URL + 'api/place-order', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(order),
-    });
-    return;
+    return axios.post('api/place-order', order);
 }
 
 export async function getOrders() {

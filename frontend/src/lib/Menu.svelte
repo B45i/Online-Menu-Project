@@ -114,10 +114,10 @@
                 </div>
 
                 <button
-                    class="btn btn-success"
+                    class="btn btn-success btn-floating"
                     on:click={e => addItemToCart(item)}
                 >
-                    Add to cart
+                    <i class="bi-plus" />
                 </button>
             </div>
         {/each}
@@ -198,5 +198,9 @@
         padding: 1rem;
         background-color: #000;
         color: #fff;
+    }
+
+    .bi-plus {
+        font-size: 1.2rem;
     }
 </style>
