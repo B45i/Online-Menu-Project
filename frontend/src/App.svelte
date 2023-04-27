@@ -7,18 +7,24 @@
     import Login from './lib/Login.svelte';
     import AddUser from './lib/AddUser.svelte';
     import Feedback from './lib/Feedback.svelte';
+    import ViewFeedbacks from './lib/ViewFeedbacks.svelte';
 </script>
 
 <Router>
-    <Route path="/admin/login">
-        <Login />
-    </Route>
     <Route path="/">
         <Landing />
     </Route>
 
     <Route path="table/:id">
         <Menu />
+    </Route>
+
+    <Route path="/feedback">
+        <Feedback />
+    </Route>
+
+    <Route path="/admin/login">
+        <Login />
     </Route>
     <Route path="admin/orders">
         <Orders />
@@ -30,8 +36,8 @@
         <AddUser />
     </Route>
 
-    <Route path="/feedback">
-        <Feedback />
+    <Route path="/admin/view-feedback">
+        <ViewFeedbacks />
     </Route>
 
     <Route path="/*">

@@ -52,3 +52,7 @@ export async function updateStatus(id, status) {
 export async function addFeedback(feedback) {
     return await axios.post('api/feedback', feedback);
 }
+
+export async function getFeedbacks() {
+    return await axios.get('api/feedback', getHeader());
+}

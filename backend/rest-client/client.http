@@ -37,3 +37,7 @@ Content-Type: application/json
     "feedback_text": "Good Food", 
     "seat_id": 12
 }
+
+### 
+
+GET {{BASE_URL}}feedback/

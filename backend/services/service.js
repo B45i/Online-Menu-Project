@@ -117,3 +117,8 @@ export async function addFeedback(feedback) {
     );
     return rows;
 }
+
+export async function getFeedbacks() {
+    const { rows } = await pgClient.query('SELECT * FROM feedbacks');
+    return rows;
+}
