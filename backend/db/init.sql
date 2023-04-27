@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS food_order_items (
     order_id INTEGER NOT NULL,
     food_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
+    status VARCHAR(255) DEFAULT 'PENDING',
     FOREIGN KEY (order_id) REFERENCES food_order(id) ON DELETE CASCADE,
     FOREIGN KEY (food_id) REFERENCES food_menu(id) ON DELETE CASCADE
 );
@@ -37,3 +38,4 @@ CREATE TABLE users (
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL
 );
+INSERT INTO users(username, password) VALUES('admin', 'password')

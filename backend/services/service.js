@@ -32,7 +32,9 @@ export async function getOrders() {
             food_order_items.food_id,
             food_menu.name,
             food_menu.price,
-            food_order_items.quantity
+            food_order_items.quantity,
+            food_order_items.status,
+            food_order_items.id as order_item_id
         FROM food_order
         JOIN food_order_items ON food_order.id = food_order_items.order_id
         JOIN food_menu ON food_order_items.food_id = food_menu.id
@@ -48,6 +50,8 @@ export async function getOrders() {
             name: item.name,
             quantity: item.quantity,
             price: item.price,
+            status: item.status,
+            order_item_id: item.order_item_id,
         })),
     }));
 
@@ -96,4 +100,10 @@ export async function addUser(username, password) {
         [username, password]
     );
     return rows;
+}
+
+export async function updateStatus(id, status) {
+    await pgClient.query(
+        `UPDATE food_order_items SET status = '${status}' WHERE id = ${id};`
+    );
 }

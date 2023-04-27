@@ -2,7 +2,7 @@
     import { onMount, onDestroy } from 'svelte';
     import { generatePDF } from '../utils/pdf';
 
-    import { completePayment, getOrders } from '../api/api';
+    import { completePayment, getOrders, updateStatus } from '../api/api';
     import Navbar from './Navbar.svelte';
     import RouteGuard from './RouteGuard.svelte';
 
@@ -39,6 +39,15 @@
     function getTotal(items) {
         return items?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
     }
+
+    async function handleStatusChange(id, status) {
+        try {
+            const result = await updateStatus(id, status);
+        } catch (error) {
+            console.log(error);
+        }
+        loadOrders();
+    }
 </script>
 
 <main>
@@ -59,6 +68,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +79,35 @@
                             <td>{item.price}</td>
                             <td>{item.quantity}</td>
                             <td>{item.price * item.quantity}</td>
+                            <td>
+                                {#if item.status === 'COMPLETE'}
+                                    <span class="text-success">Served</span>
+                                {:else if item.status === 'PENDING'}
+                                    <button
+                                        on:click={e =>
+                                            handleStatusChange(
+                                                item.order_item_id,
+                                                'PREPARED'
+                                            )}
+                                        class="btn btn-primary btn-sm"
+                                        >Mark prepared</button
+                                    >
+                                {:else if item.status === 'PREPARED'}
+                                    <button
+                                        on:click={e =>
+                                            handleStatusChange(
+                                                item.order_item_id,
+                                                'COMPLETE'
+                                            )}
+                                        class="btn btn-success btn-sm"
+                                        >Mark Served</button
+                                    >
+                                {:else if item.status === 'CANCELLED'}
+                                    <span class="text-danger">Cancelled</span>
+                                {:else}
+                                    {item.status}
+                                {/if}
+                            </td>
                         </tr>
                     {/each}
                     <tr>

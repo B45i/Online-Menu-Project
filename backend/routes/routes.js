@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, response } from 'express';
 import {
     getMenu,
     addFood,
@@ -8,6 +8,7 @@ import {
     deleteFood,
     getUser,
     addUser,
+    updateStatus,
 } from '../services/service.js';
 
 import authMiddleware from '../middleware/authentication.js';
@@ -98,6 +99,13 @@ apiRouter.post('/api/signup', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+});
+
+apiRouter.post('/api/update-status', authMiddleware, async (req, res) => {
+    const { id, status } = req.body;
+    console.log(id, status);
+    await updateStatus(id, status);
+    res.json({ message: 'Status updated' });
 });
 
 export default apiRouter;

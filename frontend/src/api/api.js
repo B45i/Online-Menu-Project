@@ -44,3 +44,7 @@ export async function login(username, password) {
 export async function addUser(username, password) {
     return await axios.post('api/signup', { username, password });
 }
+
+export async function updateStatus(id, status) {
+    return await axios.post('api/update-status', { id, status }, getHeader());
+}
