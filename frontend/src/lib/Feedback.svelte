@@ -4,76 +4,74 @@
     let rating = 5;
     let feedback = '';
     let seatId = '';
+    let feedbackDone = false;
 
     $: allowSubmit = rating && feedback && seatId;
 
-    function handleFeedback(e) {
+    async function handleFeedback(e) {
         e.preventDefault();
-        addFeedback({
-            rating,
-            feedback_text: feedback,
-            seat_id: seatId,
-        });
+        try {
+            const response = await addFeedback({
+                rating,
+                feedback_text: feedback,
+                seat_id: seatId,
+            });
+
+            feedbackDone = true;
+        } catch (error) {}
     }
 </script>
 
 <Navbar isAdmin={false} />
 <div class="container mt-3">
     <form action="">
-        <form class="login-form border p-4 shadow rounded bg-white">
-            <h3 class="text-center mb-3">Submit feedback</h3>
-            <div class="mb-3">
-                <label for="username" class="form-label">Rating:</label>
-
-                <select bind:value={rating} class="select form-select">
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                    <option value="4">Four</option>
-                    <option value="5">Five</option>
-                </select>
+        {#if feedbackDone}
+            <div class="alert alert-success">
+                Feedback submitted successfully
             </div>
+        {:else}
+            <form class="login-form border p-4 shadow rounded bg-white">
+                <h3 class="text-center mb-3">Submit feedback</h3>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Rating:</label>
 
-            <div class="mb-3">
-                <label for="username" class="form-label">Table:</label>
-                <input bind:value={seatId} type="text" class="form-control" />
-            </div>
-
-            <div class="mb-3">
-                <label for="username" class="form-label">Feedback:</label>
-
-                <textarea
-                    bind:value={feedback}
-                    class="form-control"
-                    cols="30"
-                    rows="5"
-                />
-            </div>
-
-            <button
-                disabled={!allowSubmit}
-                on:click={handleFeedback}
-                class="btn btn-primary mb-2"
-            >
-                Submit
-            </button>
-
-            <!-- {#if passwordRepeat && password !== passwordRepeat}
-                <div class="form-text text-danger">
-                    Please fill all fields and make sure that passwords match
+                    <select bind:value={rating} class="select form-select">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                    </select>
                 </div>
-            {/if}
-            {#if errorMessage}
-                <div class="form-text text-danger">
-                    {errorMessage}
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Table:</label>
+                    <input
+                        bind:value={seatId}
+                        type="text"
+                        class="form-control"
+                    />
                 </div>
-            {/if}
-    
-            {#if successMessage}
-                <div class="alert alert-success">
-                    {successMessage}
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Feedback:</label>
+
+                    <textarea
+                        bind:value={feedback}
+                        class="form-control"
+                        cols="30"
+                        rows="5"
+                    />
                 </div>
-            {/if} -->
-        </form>
+
+                <button
+                    disabled={!allowSubmit}
+                    on:click={handleFeedback}
+                    class="btn btn-primary mb-2"
+                >
+                    Submit
+                </button>
+            </form>
+        {/if}
     </form>
 </div>
