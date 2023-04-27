@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS food_order_items;
 DROP TABLE IF EXISTS food_menu;
 DROP TABLE IF EXISTS food_order;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS feedbacks
+DROP TABLE IF EXISTS feedbacks;
 
 
 -- Create food_menu table
@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS feedbacks (
 );
 
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL
 );
-INSERT INTO users(username, password) VALUES('admin', 'password')
+INSERT INTO users(username, password) VALUES('admin', 'password');

@@ -1,56 +1,42 @@
 -- Seed data
 
-INSERT INTO users(username, password) VALUES('admin', 'password')
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (1, 'Butter chicken', 120, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80', 'non_vegetarian', 'A rich and creamy tomato-based chicken curry');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (11, 'Orange juice', 80, 'https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&w=600', 'drinks', 'Fresh sweet orange juice');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (13, 'Coffee', 20, 'https://images.pexels.com/photos/685527/pexels-photo-685527.jpeg?auto=compress&cs=tinysrgb&w=600', 'drinks', 'Hot Coffee');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (15, 'Tea', 20, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb7xQRtjqGl9EGhE_ruqrhfIkn0AzGcyl7TFZyJ1KV6A&usqp=CAU&ec=48665698', 'drinks', 'Hot Milk tea');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (18, 'Sandwich', 120, 'https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&w=600', 'fast_food', 'Cheesy Sandwich ');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (19, 'Tandoori chicken', 160, 'https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=600', 'non_vegetarian', 'Marinated and grilled chicken');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (20, 'Chicken Fry', 110, 'https://images.pexels.com/photos/1059943/pexels-photo-1059943.jpeg?auto=compress&cs=tinysrgb&w=600', 'non_vegetarian', 'Deep-fried crunchy chicken ');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (21, 'French fries', 150, 'https://images.pexels.com/photos/1600727/pexels-photo-1600727.jpeg?auto=compress&cs=tinysrgb&w=600', 'fast_food', 'Crispy french fries');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (22, 'Idli', 20, 'https://images.pexels.com/photos/4331489/pexels-photo-4331489.jpeg?auto=compress&cs=tinysrgb&w=600', 'vegetarian', 'Soft idli');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (23, 'Palak paneer', 100, 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=600', 'vegetarian', 'Spicey palak paneer curry');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (24, 'Paratha', 30, 'https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg?auto=compress&cs=tinysrgb&w=600', 'breads', 'Soft paratha');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (25, 'Vada Pav', 80, 'https://media.istockphoto.com/id/1329212743/photo/vada-pav.jpg?s=612x612&w=0&k=20&c=K08WlL8YxjjLC5MfmuiKhHI04RZ-UGsVAQVIBKdu-QM=', 'street_food', 'Indian street food vada paav');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (26, 'Pani puri', 60, 'https://media.istockphoto.com/id/861264162/photo/homemade-pani-puri-golgappa.jpg?s=612x612&w=0&k=20&c=NYqufC0vis8m0dQiliMgozMxYDH92LjS4rvszYlxtus=', 'street_food', 'Tasty indian pani puri ');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (27, 'Laddu', 8, 'https://media.istockphoto.com/id/531777198/photo/orange-indian-sweets-motichoor-laddu-or-laddoo.jpg?s=612x612&w=0&k=20&c=PHsOjAYgi-UqhIHpFf3vJDFhRQu3Ee864nogbMK896k=', 'sweets', 'Sweet laddu');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (28, 'Gulab jamun', 30, 'https://media.istockphoto.com/id/668147754/photo/gulab-jamun.jpg?s=612x612&w=0&k=20&c=yM8YjrafVCS6SLTEWQH4s2FVduHnAzfkUIR-KkWI7Z0=', 'sweets', 'Indian special gulab jamun');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (29, 'Rasagula', 50, 'https://media.istockphoto.com/id/1044082912/photo/indian-rasgulla-or-rosogulla-dessert-sweet-served-in-a-bowl-selective-focus.jpg?s=612x612&w=0&k=20&c=ESNkK4FnHDVE2r4-7XwZtPdSqCnZf22QeBKET_qUXEM=', 'sweets', 'Milk based indian sweets');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (30, 'Watermelon juice', 75, 'https://media.istockphoto.com/id/471973052/photo/watermelon-juice.jpg?s=612x612&w=0&k=20&c=VPOJq8lUXln7YDWz1o_8HA4GJKzbuKd7FQj93OFcdx8=', 'drinks', 'Fresh sweet watermelon juice');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (31, 'Chapati', 15, 'https://media.istockphoto.com/id/1336517353/photo/a-high-protein-indian-flat-bread-with-whole-wheat-and-lentils-popularly-known-as-moong-dal.jpg?s=612x612&w=0&k=20&c=nsj35lP8uXkLHXbBwRFedHn1ybOUUPNE3NdV0rq6OSg=', 'breads', 'Soft chapati');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (32, 'Appam', 15, 'https://media.istockphoto.com/id/1263171158/photo/appam-palappam-kallappam-vella-appam-parotta-roti-or-chapati-a-popular-traditional-kerala.jpg?s=612x612&w=0&k=20&c=nDSXqnYUSpamncHZbNjTHU7isVDT3Ax9J2-aQG92SDs=', 'breads', 'Kerala sweet palappam');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (33, 'Chana masala', 90, 'https://media.istockphoto.com/id/1215493535/photo/chickpeas-masala-chole-masala-curry-traditional-indian-dish.jpg?s=612x612&w=0&k=20&c=9H2U3spl4_0Ny6x6LvmBwXNhwzku_HMlinL80pId9bY=', 'vegetarian', 'Spiced chickpea curry');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (34, 'Fried rice (veg)', 130, 'https://media.istockphoto.com/id/157646162/photo/vegetarian-fried-rice-with-vegetables-healthy.jpg?s=612x612&w=0&k=20&c=1p6fTK0uj9fV1hxyaMOm1mOlrfMl67uT0AiyqTiV3ug=', 'vegetarian', 'Vegetable fried rice');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (35, 'Chicken Fried rice', 150, 'https://media.istockphoto.com/id/1397479529/photo/asian-chicken-fried-rice-with-chopsticks-directly-above-photo.jpg?s=612x612&w=0&k=20&c=xP1JCh1iiLGd5LiuDn2MQQ5iABiur6O_d2NMJkf3oPo=', 'non_vegetarian', 'mixed chicken fried rice');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (36, 'Pudding', 100, 'https://media.istockphoto.com/id/1173467668/photo/pudding.jpg?s=612x612&w=0&k=20&c=rRGkixmlhUOK62VFlbQWx4Ki_YmmfpUrbm04ojP6E4s=', 'desserts', 'Sweet pudding dessert');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (37, 'Cheese cake', 120, 'https://media.istockphoto.com/id/1248489319/photo/tiramisu-cake-with-mint.jpg?s=612x612&w=0&k=20&c=bE6ntOpTO7S8T_Rr39cnNkV_252VUB8-vymkN9WsQRQ=', 'desserts', 'cheese cake');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (38, 'Chocolate lava cake', 120, 'https://media.istockphoto.com/id/541267186/photo/chocolate-fondant-with-strawberries-and-powdered-sugar.jpg?s=612x612&w=0&k=20&c=6a_-IAUELw0zVMR0vjVtr9UiDg_GAN-S3eowoDGsMhI=', 'desserts', 'chocolate cake');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (39, 'pazhampori', 8, 'https://media.istockphoto.com/id/1412872014/photo/pazham-pori-from-kerala-cuisine.jpg?s=612x612&w=0&k=20&c=RCLOdLEpTE8qcDYIaYIla-rS6VdjkGp1-dLOldJquSM=', 'snacks', 'kerala special pazham pori');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (40, 'Vada', 8, 'https://media.istockphoto.com/id/1419944160/photo/view-of-medu-vada-also-known-as-ulundu-vadai-is-a-popular-and-traditional-recipe-of-tamil.jpg?s=612x612&w=0&k=20&c=yy8M2PyLIKRf1TmFIxQmD3OCEzfDeBX_MhIVzw7smIs=', 'snacks', 'crunchy uzhunn vada');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (41, 'soup(veg)', 160, 'https://media.istockphoto.com/id/183366960/photo/vegetable-soup-in-white-porcelain-bowl.jpg?s=612x612&w=0&k=20&c=qcKrBMaAm1vaksqgHSKrKLwhumdIlzfArWhRdYyhIZA=', 'vegetarian', 'hot sour veg soup');
+INSERT INTO public.food_menu (id, name, price, image_url, category, description) VALUES (42, 'Soup (non veg)', 180, 'https://media.istockphoto.com/id/1463392173/photo/hot-tasty-healthy-soup-with-fish-and-vegetables-served-on-a-round-plate.jpg?s=612x612&w=0&k=20&c=9Dm9qUlbkkDNeD4RXRlwbJtQBmFq4Y8K8ZR1FPi2RDE=', 'non_vegetarian', 'hot spicey chicken soup');
 
-INSERT INTO food_menu (name, price, description, category) 
-VALUES 
-    ('Butter chicken', 120, 'A rich and creamy tomato-based chicken curry', 'non_vegetarian'),
-    ('Palak paneer', 110, 'Spinach and cottage cheese curry', 'vegetarian'),
-    ('Chana masala', 90, 'Spiced chickpea curry', 'north_indian'),
-    ('Aloo gobi', 100, 'Potato and cauliflower curry', 'north_indian'),
-    ('Samosa', 20, 'Fried pastry with spiced potato filling', 'snacks'),
-    ('Papdi chaat', 20, 'Crispy dough wafers with yogurt, chutney, and spices', 'chaat'),
-    ('Tandoori chicken', 150, 'Marinated and grilled chicken', 'non_vegetarian'),
-    ('Naan', 25, 'Leavened Indian flatbread', 'breads'),
-    ('Roti', 20, 'Unleavened Indian flatbread', 'breads'),
-    ('Lassi', 25, 'Sweet or savory yogurt-based drink', 'drinks');
 
 
-
--- Create an entry in the "food_order" table
-INSERT INTO food_order (seat_id, payment_completed) VALUES ('A1', false) RETURNING id;
-
--- Use the generated "id" value to insert the order items in "food_order_items" table
-INSERT INTO food_order_items (food_id, order_id, quantity)
+INSERT INTO feedbacks (rating, feedback_text, seat_id)
 VALUES
-    ((SELECT id FROM food_menu WHERE name = 'Item 1'), (SELECT id FROM food_order ORDER BY id DESC LIMIT 1), 3),
-    ((SELECT id FROM food_menu WHERE name = 'Item 3'), (SELECT id FROM food_order ORDER BY id DESC LIMIT 1), 3),
-    ((SELECT id FROM food_menu WHERE name = 'Item 5'), (SELECT id FROM food_order ORDER BY id DESC LIMIT 1), 3);
+  (5, 'The food was absolutely delicious and the service was fantastic!', 10),
+  (3, 'The atmosphere was great, but the food was just okay.', 12),
+  (2, 'I was really disappointed with my meal and the service was slow.', 7),
+  (4, 'The food was good, but the prices were a bit high.', 5),
+  (5, 'I had an amazing experience here and will definitely be back!', 8);
 
-
--- select all orders
-SELECT 
-    food_order.id as order_id,
-    food_order.seat_id,
-    food_order.payment_completed,
-    food_order_items.food_id,
-    food_menu.name,
-    food_order_items.quantity
-FROM food_order
-JOIN food_order_items ON food_order.id = food_order_items.order_id
-JOIN food_menu ON food_order_items.food_id = food_menu.id
-
-
---  query to get items for an order with id 1
-
-SELECT 
-    food_order.id as order_id,
-    food_order.seat_id,
-    food_order.payment_completed,
-    food_order_items.food_id,
-    food_menu.name,
-    food_order_items.quantity
-FROM food_order
-JOIN food_order_items ON food_order.id = food_order_items.order_id
-JOIN food_menu ON food_order_items.food_id = food_menu.id
-WHERE food_order.id = 1;
